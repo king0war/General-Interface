@@ -18,18 +18,18 @@ Edit  gi_exec.php program automatically execute action method
 
 Configuration instructions
 Configuration file : config.php
-define ('GI_KEY', '* (<% $ #.'); / / encryption key
-define ('GI_PATH', dirname (__FILE__)); / / root directory
-define ('GI_CHAR', 'GBK'); / / Program Character Set
-define ('GI_TIMEOUT', 200); / / expiration time , unit: seconds
-define ('GI_PARAMS_ARRAY', false); / / parameter is used array package
+define ('GI_KEY', '* (<% $ #.'); // encryption key
+define ('GI_PATH', dirname (__FILE__)); // root directory
+define ('GI_CHAR', 'GBK'); // Program Character Set
+define ('GI_TIMEOUT', 200); // expiration time , unit: seconds
+define ('GI_PARAMS_ARRAY', false); // parameter is used array package
 true data is passed to the array to action method
 Testing .. Params:
 Array ([0] => Array ([0] => I'm parameters [1 ] = > The second parameter ) )
 false data passed as a parameter to the action method
 Testing .. Params:
 Array ([0] => I'm parameters [1 ] = > The second parameter )
-$ whiteList = array ('get', 'post', 'put', 'delete', 'test'); / / method can be called white list
+$ whiteList = array ('get', 'post', 'put', 'delete', 'test'); // method can be called white list
 
 Test Method : test
 Returns: the received parameters
