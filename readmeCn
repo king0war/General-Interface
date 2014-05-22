@@ -1,0 +1,41 @@
+名称：通用接口General Interface
+Fun：实现安全的web hook，外部程序通信
+使用说明
+
+	原理：发送程序->数据封装->发送->接受程序->解压->执行
+	执行：gi_notice.php->client.php
+	加密：共有2中加密方法，1 dz经典加密  2 简单加密
+	参数说明：
+	1、action  接收方需要执行的方法名
+	2、data		其他需要传送的数据
+	使用方法: 
+	1、通知使用方法，详见demo.php
+	2、接收方使用方法
+	编辑./gi_exec.php 程序自动执行action方法
+	
+	配置说明
+	配置文件：config.php
+define('GI_KEY', '*(<.%$#');		//加密key
+define('GI_PATH', dirname(__FILE__));	//根目录
+define('GI_CHAR', 'GBK');		//程序字符集
+define('GI_TIMEOUT', 200); //过期时间， 单位：秒
+define('GI_PARAMS_ARRAY', false); //参数是否用array封装
+true	data以数组形式传递到action方法
+Testing.. Params:
+Array([0]=>Array ( [0] => 我是参数1 [1] => 第二个参数 ) )
+false	data以参数形式传递到action方法
+Testing.. Params:
+Array ( [0] => 我是参数1 [1] => 第二个参数 )
+$whiteList = array('get','post','put','delete','test');		//可调用方法白名单
+	
+	测试方法：	test
+	返回：接受到的参数
+
+使用场景
+ * 快捷实现特定场景下的需求。
+ * 使用场景1：实现安全接口
+ * 使用场景2： A、B某个动作需要同步执行。。。
+ * 使用场景3： A、B需要共用用户信息
+ * 解决方案a:	数据库主从同步   优点：数据高度一致  缺点：配置繁琐，数据库开销增大
+ * 解决方案b:	ucenter   优点：快，常用cms几乎都有uc插件 缺点： 功能固定，如想实现特殊功能（同步注册等）需要对uc进行二次开发
+ * 解决方案c:  gi	优点： 灵活，简单实现各种功能		缺点：需要自己开发。。。。
